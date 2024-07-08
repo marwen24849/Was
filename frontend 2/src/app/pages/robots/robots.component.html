@@ -1,0 +1,107 @@
+<div class="container p-4">
+  <!-- Projects header -->
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex align-items-center mb-3">
+        <h1 class="h4 mb-0">Robots</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-6 d-flex justify-content-start">
+      <input type="text" class="form-control" placeholder="Search" />
+    </div>
+
+    <div class="col-md-6 d-flex justify-content-end">
+      <button mat-flat-button color="primary" (click)="openAddDialog()">
+        <mat-icon>add</mat-icon>
+        New Robot
+      </button>
+    </div>
+  </div>
+  @if (displayedRobots.length> 0) {
+  <div class="row">
+    <div class="col-12">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">State</th>
+
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (robot of displayedRobots; track $index) {
+            <tr>
+              <td class="text-center">
+                <div class="cell-content">
+                  <span>{{ robot.id }}</span>
+                </div>
+              </td>
+              <td class="text-center">
+                <div class="cell-content">
+                  <span>{{ robot.name }}</span>
+                </div>
+              </td>
+              <td class="text-center">
+                <div class="cell-content">
+                  <span>{{ robot.status }}</span>
+                </div>
+              </td>
+
+              <td>
+                <div class="cell-content">
+                  <div class="btn-group">
+                    <button
+                      class="btn"
+                      matRippleColor="rgb(171,219,227)"
+                      [matMenuTriggerFor]="menu"
+                    >
+                      <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                      <button mat-menu-item class="dropdown-item">
+                        <mat-icon>edit</mat-icon> Edit
+                      </button>
+                      <button mat-menu-item class="dropdown-item">
+                        <mat-icon>delete</mat-icon> Delete
+                      </button>
+                    </mat-menu>
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  }@else {
+  <div class="row align-items-center" style="height: 60vh">
+    <div class="col-12 d-flex justify-content-center">
+      <div>
+        <p class="display-4">No robots found.</p>
+      </div>
+    </div>
+  </div>
+  }
+
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center">
+      <mat-paginator
+        [length]="totalRobots"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="[5, 10, 20]"
+        (page)="onPageChange($event)"
+        showFirstLastButtons
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+spring:
+  data:
+    mongodb:
+      username: admin
+      password: admin
+      host: localhost
+      port: 27017
+      database: backend
+      authentication-database: admin
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8081/realms/RPA
+          jwk-set-uri: http://localhost:8081/realms/RPA/protocol/openid-connect/certs
+
+robot:
+  script:
+    host-script-path: src/main/resources/tmp
+    docker-script-path: /app/tests/
+    template-path: src/main/resources/template.robot
+    file-permissions: rwxrwxrwx
+  docker:
+    base-image: robotframework-base:latest

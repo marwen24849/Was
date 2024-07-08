@@ -1,0 +1,43 @@
+<h1 mat-dialog-title class="dialog-title">New Robot</h1>
+<div mat-dialog-content class="dialog-content">
+  <form [formGroup]="newTask" class="new-task-form">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="Enter task name" />
+      @if (newTask.get('name')?.invalid && newTask.get('name')?.touched) {
+      <mat-error> Name is required </mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        formControlName="description"
+        placeholder="Enter task description"
+        rows="3"
+      ></textarea>
+      @if (newTask.get('description')?.invalid &&
+      newTask.get('description')?.touched) {
+      <mat-error> Description is required </mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Select Automation</mat-label>
+      <mat-select
+        [(ngModel)]="selectedGroupId"
+        (selectionChange)="onGroupSelectionChange($event.value)"
+        [ngModelOptions]="{ standalone: true }"
+      >
+        @for (group of groups; track $index) {
+        <mat-option [value]="group.id">{{ group.name }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions align="end" class="dialog-actions">
+  <button mat-stroked-button color="warn" (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSave()" cdkFocusInitial>
+    Add
+  </button>
+</div>

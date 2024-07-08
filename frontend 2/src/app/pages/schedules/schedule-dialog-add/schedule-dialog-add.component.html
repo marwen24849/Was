@@ -1,0 +1,146 @@
+<h1 mat-dialog-title class="dialog-title">Create a scheduled automation</h1>
+<div mat-dialog-content class="dialog-content">
+  <form [formGroup]="newSchedule" class="new-task-form">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="Enter task name" />
+      @if (newSchedule.get('name')?.invalid && newSchedule.get('name')?.touched)
+      {
+      <mat-error> Name is required </mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        formControlName="description"
+        placeholder="Enter task description"
+        rows="3"
+      ></textarea>
+      @if (newSchedule.get('description')?.invalid &&
+      newSchedule.get('description')?.touched) {
+      <mat-error> Description is required </mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Select Robot</mat-label>
+      <mat-select
+        [(ngModel)]="selectedGroupId"
+        (selectionChange)="onGroupSelectionChange($event.value)"
+        [ngModelOptions]="{ standalone: true }"
+      >
+        @for (group of groups; track $index) {
+        <mat-option [value]="group.id">{{ group.name }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <!-- <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Start Date</mat-label>
+      <input
+        matInput
+        formControlName="name"
+        placeholder="Enter task name"
+        type="date"
+      />
+      @if (newTask.get('startDate')?.invalid &&
+      newTask.get('startDate')?.touched) {
+      <mat-error> Description is required </mat-error>
+      }
+    </mat-form-field> -->
+    <!-- <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Select Frequency</mat-label>
+      <mat-select
+        [(ngModel)]="selectedFrequency"
+        (selectionChange)="onFrequencySelectionChange($event.value)"
+        [ngModelOptions]="{ standalone: true }"
+      >
+        @for (freq of frequency; track $index) {
+        <mat-option [value]="freq">{{ freq }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field> -->
+    <div class="row">
+      <div class="col-md-2">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Second</mat-label>
+          <input
+            matInput
+            placeholder="0-59"
+            [(ngModel)]="cron.second"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-2">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Minute</mat-label>
+          <input
+            matInput
+            placeholder="0-59"
+            [(ngModel)]="cron.minute"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-2">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Hour</mat-label>
+          <input
+            matInput
+            placeholder="0-23"
+            [(ngModel)]="cron.hour"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-2">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Day of Month</mat-label>
+          <input
+            matInput
+            placeholder="1-31"
+            [(ngModel)]="cron.dayOfMonth"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-2">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Month</mat-label>
+          <input
+            matInput
+            placeholder="1-12"
+            [(ngModel)]="cron.month"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-2">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Day of Week</mat-label>
+          <input
+            matInput
+            placeholder="0-7 (0 and 7 for Sunday)"
+            [(ngModel)]="cron.dayOfWeek"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div mat-dialog-actions align="end" class="dialog-actions">
+  <button type="button" class="btn btn-outline-primary" (click)="onCancel()">
+    Cancel
+  </button>
+  <button
+    (click)="onSave()"
+    mat-dialog-close
+    cdkFocusInitial
+    type="button"
+    class="btn btn-primary"
+  >
+    Publish
+  </button>
+</div>

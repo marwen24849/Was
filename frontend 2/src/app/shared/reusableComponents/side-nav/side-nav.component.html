@@ -1,0 +1,66 @@
+<mat-nav-list class="sidenav-list">
+  <a mat-list-item (click)="navigateTo('/groups')" (click)="onToggleClose()">
+    <div class="custom-list-item">
+      <mat-icon class="custom-icon">group</mat-icon>
+      <span>Libraries</span>
+    </div>
+  </a>
+  <a mat-list-item (click)="navigateTo('/tasks')" (click)="onToggleClose()">
+    <div class="custom-list-item">
+      <mat-icon class="custom-icon">task</mat-icon>
+      <span>Actions</span>
+    </div>
+  </a>
+  <a mat-list-item (click)="navigateTo('/templates')" (click)="onToggleClose()">
+    <div class="custom-list-item">
+      <mat-icon class="custom-icon">description</mat-icon>
+      <span>Templates</span>
+    </div>
+  </a>
+  <a mat-list-item (click)="navigateTo('/projects')" (click)="onToggleClose()">
+    <div class="custom-list-item">
+      <mat-icon class="custom-icon">folder</mat-icon>
+      <span>Projects</span>
+    </div>
+  </a>
+  <a mat-list-item (click)="navigateTo('/schedules')" (click)="onToggleClose()">
+    <div class="custom-list-item">
+      <mat-icon class="custom-icon">work</mat-icon>
+      <span>Schedules</span>
+    </div>
+  </a>
+  <a
+    mat-list-item
+    (click)="navigateTo('/automations')"
+    (click)="onToggleClose()"
+  >
+    <div class="custom-list-item">
+      <mat-icon class="custom-icon">autorenew</mat-icon>
+      <span>Automations</span>
+    </div>
+  </a>
+  <a mat-list-item (click)="navigateTo('/jobs')" (click)="onToggleClose()">
+    <div class="custom-list-item">
+      <mat-icon class="custom-icon">work</mat-icon>
+      <span>Jobs</span>
+    </div>
+  </a>
+  <a mat-list-item (click)="navigateTo('/robots')" (click)="onToggleClose()">
+    <div class="custom-list-item">
+      <mat-icon class="custom-icon">smart_toy</mat-icon>
+      <span>Robots</span>
+    </div>
+  </a>
+  <ng-container *ngIf="!isLogIn()">
+    <a mat-list-item (click)="login()">
+      <span>Login</span>
+    </a>
+  </ng-container>
+
+  <ng-container *ngIf="isLogIn()">
+    <a mat-list-item (click)="onlogOut()">
+      <span>LogOut</span>
+    </a>
+  </ng-container>
+
+</mat-nav-list>

@@ -1,0 +1,38 @@
+<h1 mat-dialog-title class="dialog-title">Edit Group</h1>
+<div mat-dialog-content class="dialog-content">
+  <form [formGroup]="editGroup" class="edit-group-form">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="Enter group name" />
+
+      @if (editGroup.get('name')?.invalid && editGroup.get('name')?.touched) {
+      <mat-error>Name is required</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        formControlName="description"
+        placeholder="Enter group description"
+        rows="3"
+      ></textarea>
+      @if (editGroup.get('description')?.invalid && editGroup.get('description')?.touched)
+      {
+      <mat-error>Description is required</mat-error>
+      }
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions align="end" class="dialog-actions">
+  <button mat-stroked-button color="warn" (click)="onCancel()">Cancel</button>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onSave()"
+    [disabled]="editGroup.invalid"
+    cdkFocusInitial
+  >
+    Save
+  </button>
+</div>

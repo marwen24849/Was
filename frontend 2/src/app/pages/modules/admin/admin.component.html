@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="menu">
+    <a [routerLink]="[{ outlets: { admin: ['dashboard'] } }]">
+      <mat-icon>dashboard</mat-icon>
+      <span>Dashboard</span>
+    </a>
+    <a [routerLink]="[{ outlets: { admin: ['users'] } }]">
+      <mat-icon class="icon">people</mat-icon>
+      <span class="text">Users</span>
+    </a>
+    <a [routerLink]="[{ outlets: { admin: ['users'] } }]">
+      <mat-icon class="icon">smart_toy</mat-icon>
+      <span class="text">Robots</span>
+    </a>
+    <a [routerLink]="[{ outlets: { admin: ['users'] } }]">
+      <mat-icon class="icon">work_history</mat-icon>
+      <span class="text">Jobs</span>
+    </a>
+    <a [routerLink]="[{ outlets: { admin: ['users'] } }]">
+      <mat-icon class="icon">schedule</mat-icon>
+      <span class="text">Schedules</span>
+    </a>
+    <mat-divider></mat-divider>
+    <a [routerLink]="[{ outlets: { admin: ['groups'] } }]">
+      <mat-icon class="icon">group</mat-icon>
+      <span class="text">Groups</span>
+    </a>
+    <a [routerLink]="[{ outlets: { admin: ['tasks'] } }]">
+      <mat-icon class="icon">task</mat-icon>
+      <span class="text">Tasks</span>
+    </a>
+  </div>
+
+  <div class="content">
+    <router-outlet name="admin"> </router-outlet>
+  </div>
+</div>

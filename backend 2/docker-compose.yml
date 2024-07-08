@@ -1,0 +1,48 @@
+services:
+
+
+
+ mongodb:
+  image: mongo
+  container_name: mongo_db
+  ports:
+   - "127.0.0.1:27017:27017"
+  volumes:
+   - mongo:/data
+  environment:
+#   - MONGO_INITDB_ROOT_USERNAME=admin
+#   - MONGO_INITDB_ROOT_PASSWORD=admin
+   - MONGO_INITDB_USERNAME=softparadigm
+   - MONGO_INITDB_PASSWORD=softparadigm
+ 
+ 
+
+
+ mongo-express:
+  image: mongo-express
+  container_name: mongo_express
+  ports:
+   - 8088:8081
+  environment:
+   - ME_CONFIG_MONGODB_ADMINUSER=admin
+   - ME_CONFIG_MONGODB_ADMINPASSWORD=admin
+   - ME_CONFIG_MONGODB_SERVER=mongodb
+
+
+
+ keycloak:
+  container_name: keycloak-bsn
+  image: quay.io/keycloak/keycloak:24.0.2
+  ports:
+   - 9090:8080
+  environment:
+   KEYCLOAK_ADMIN: admin
+   KEYCLOAK_ADMIN_PASSWORD: admin
+  command:
+   - "start-dev"
+
+
+
+
+volumes:
+ mongo: {}

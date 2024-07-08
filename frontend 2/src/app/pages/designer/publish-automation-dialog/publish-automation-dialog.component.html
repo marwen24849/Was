@@ -1,0 +1,52 @@
+<h1 mat-dialog-title class="dialog-title">Publish automation</h1>
+<div mat-dialog-content class="dialog-content">
+  <p>Make your automation available to run</p>
+
+  <form [formGroup]="newAutomation" class="new-group-form">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Automation name</mat-label>
+      <input matInput formControlName="name" placeholder="Enter group name" />
+
+      @if (newAutomation.get('name')?.invalid && newAutomation.get('name')?.touched) {
+      <mat-error>Name is required</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Change log</mat-label>
+      <textarea
+        matInput
+        formControlName="description"
+        placeholder="Enter automation change log"
+        rows="3"
+      ></textarea>
+      @if ( newAutomation.get('change log')?.invalid &&
+      newAutomation.get('changelog')?.touched) {
+      <mat-error>Change log is required</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Version</mat-label>
+      <input matInput formControlName="version" placeholder="Enter version" />
+
+      @if (newAutomation.get('version')?.invalid && newAutomation.get('version')?.touched)
+      {
+      <mat-error>Name is required</mat-error>
+      }
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions align="end" class="dialog-actions">
+  <button type="button" class="btn btn-outline-primary" (click)="onCancel()">
+    Cancel
+  </button>
+  <button
+    (click)="onSave()"
+    [disabled]="newAutomation.invalid"
+    mat-dialog-close
+    cdkFocusInitial
+    type="button"
+    class="btn btn-primary"
+  >
+    Publish
+  </button>
+</div>

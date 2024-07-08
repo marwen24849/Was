@@ -1,0 +1,93 @@
+.header {
+    line-height: 1.5;
+    text-align: left;
+    color: #212529;
+    font-family: Barlow;
+    font-size: 1rem;
+    font-weight: 400;
+    box-sizing: border-box;
+    padding: 10px;
+    border-right: 0px;
+    border-left: 0px;
+    display: flex;
+}
+
+.header-content {
+    display: flex;
+    margin: auto 0px;
+    padding: 0px 16px;
+    column-gap: 12px;
+}
+
+.dashboard-content {
+    padding: 20px;
+    //display: flex;
+}
+
+//-=-=-=--=-=-=--=-=-=--=-=-=--=-=-=--=-=-=--=-=-=--=-=-=-SUMMARY-=-=-=--=-=-=--=-=-=--=-=-=--=-=-=--=-=-=--=-=-=--=-=-=--=-=-=-
+.summary {
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: space-between;
+
+    width: 100%;
+
+}
+
+.summary-card {
+    width: calc(25% - 20px);
+
+    margin: 10px;
+
+    box-sizing: border-box;
+
+    height: 90px;
+    border-radius: 13px;
+    background-color: rgb(246, 113, 113);
+}
+
+@media screen and (max-width: 768px) {
+    .summary-card {
+        width: calc(50% - 20px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .summary-card {
+        width: 100%;
+    }
+}
+
+//-=-=-=--=-=-=--=-=-=--=-=-=--=-=-=--=-=-=--=-=-=--=-=-=-SCHUDELS AND JOBS-=-=-=--=-=-=--=-=-=--=-=-=--=-=-=--=-=-=--=-=-=--=-=-=--=-=-=-
+
+.second {
+    display: flex;
+    /* Display the cards inline */
+    margin-top: 40px;
+}
+
+.second-card {
+    width: calc(100% - 20px);
+
+    margin: 10px;
+
+    box-sizing: border-box;
+
+    height: 250px;
+    border-radius: 13px;
+    background-color: rgb(246, 113, 113);
+
+}
+
+@media screen and (max-width: 768px) {
+    .second-card {
+        width: calc(50% - 20px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .second-card {
+        width: 100%;
+    }
+}

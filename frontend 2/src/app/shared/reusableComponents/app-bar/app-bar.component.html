@@ -1,0 +1,28 @@
+
+<mat-toolbar>
+
+    <!-- <button (click)="login()" *ngIf="!kc.isLoggedIn()">Login</button>
+    <button  (click)="onlogOut()"*ngIf="kc.isLoggedIn()">LogOut</button> -->
+ 
+ 
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+    (click)="openSidenav()"
+  >
+    <mat-icon>apps</mat-icon>
+  </button>
+  <div class="right-content">
+    <button class="settings-button">
+      <mat-icon></mat-icon>
+    </button>
+    <ng-container>
+      <span>{{username}}</span>
+    </ng-container>
+    &nbsp;&nbsp;
+    
+
+    <img src="../assets/bbbbbb.jpg" alt="Profile" class="profile-image" />
+  </div>
+</mat-toolbar>

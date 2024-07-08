@@ -1,0 +1,45 @@
+mat-toolbar {
+    height: 50px;
+    background-color: rgb(238, 241, 247);
+    //box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px -1px, rgba(0, 0, 0, 0.14) 0px 4px 5px 0px, rgba(0, 0, 0, 0.12) 0px 1px 10px 0px;
+    align-items: end;
+}
+
+.example-icon {
+    margin-right: 16px;
+    /* Optional: Add some space after the icon button */
+}
+
+.settings-button  {
+    font-size: 24px;
+    width: 30px;
+    margin: 10px;
+    background-color: rgb(238, 241, 247);
+    border: none;
+
+
+    /* Optional: Adjust icon size if needed */
+}
+
+.right-content {
+    display: flex;
+    align-items: center;
+    /* Vertically center the content */
+    margin-left: auto;
+    /* Push the right content to the right end */
+}
+
+.right-content button {
+    margin-right: 16px;
+    /* Add some space after the icon button */
+}
+
+.profile-image {
+    width: 40px;
+    /* Adjust the size of the profile image */
+    height: 40px;
+    border-radius: 50%;
+    /* Make the image rounded */
+    object-fit: cover;
+   background-color: aqua;
+}

@@ -1,0 +1,314 @@
+<div class="row mb-3 border-bottom-light">
+  <div class="col-12">
+    <div
+      class="header-bar d-flex justify-content-between align-items-center p-2 bg-light"
+    >
+      <div class="button-group">
+        <button
+          mat-button
+          color="primary"
+          class="custom-button mr-2"
+          :first-child
+          (click)="goToProjects()"
+        >
+          Go to Projects
+        </button>
+        <div style="margin-left: 40px; gap: 10px; display: flex">
+          <button
+            mat-button
+            color="primary"
+            class="custom-button mr-2"
+            :second-child
+            (click)="openScriptDialog()"
+          >
+            Test
+          </button>
+          <button
+            mat-button
+            color="primary"
+            class="custom-button mr-2"
+            (click)="openPublishAutomationDialog()"
+            :third-child
+          >
+            Publish
+          </button>
+        </div>
+      </div>
+      <h2 class="m-0 text-center flex-grow-1" style="justify-content: left">
+        {{ definition.name }}
+      </h2>
+      <div>
+        <button
+          mat-button
+          color="primary"
+          class="custom-button mr-2"
+          (click)="openPublishTemplateDialog()"
+        >
+          Submit as Template
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<sqd-designer
+  theme="light"
+  [undoStackSize]="10"
+  [definition]="definition"
+  [toolboxConfiguration]="toolboxConfiguration"
+  [stepsConfiguration]="stepsConfiguration"
+  [validatorConfiguration]="validatorConfiguration"
+  [controlBar]="true"
+  [selectedStepId]="selectedStepId"
+  [isReadonly]="isReadonly"
+  [isToolboxCollapsed]="isToolboxCollapsed"
+  [isEditorCollapsed]="isEditorCollapsed"
+  [areEditorsHidden]="false"
+  [rootEditor]="rootEditor"
+  [stepEditor]="stepEditor"
+  (onReady)="onDesignerReady($event)"
+  (onDefinitionChanged)="onDefinitionChanged($event)"
+  (onSelectedStepIdChanged)="onSelectedStepIdChanged($event)"
+  (onIsToolboxCollapsedChanged)="onIsToolboxCollapsedChanged($event)"
+  (onIsEditorCollapsedChanged)="onIsEditorCollapsedChanged($event)"
+>
+</sqd-designer>
+<!-- ======================================================== Root Editor ======================================================== -->
+
+<ng-template #rootEditor let-editor>
+  <h2>Project Properties</h2>
+
+  @if (!(editor.definition.properties | keyvalue).length) {
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="addNewProperty(editor.definition.properties)"
+  >
+    Add Property
+  </button>
+  } @else{ @for ( property of editor.definition.properties | keyvalue; track
+  $index) {
+  <div>
+    <h4>{{ property.key }}</h4>
+    <button
+      type="button"
+      class="btn btn-danger"
+      color="warn"
+      (click)="removeProperty(editor.definition.properties, property.key)"
+    ></button>
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        type="text"
+        [value]="property.value"
+        [readonly]="editor.isReadonly"
+        (input)="
+          updateProperty(
+            editor.definition.properties,
+            property.key,
+            $event,
+            editor.context
+          )
+        "
+      />
+    </mat-form-field>
+  </div>
+  }
+  <div class="add-property">
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        placeholder="Enter property name"
+        [(ngModel)]="newPropertyName"
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        placeholder="Enter property value"
+        [(ngModel)]="newPropertyValue"
+      />
+    </mat-form-field>
+
+
+  </div>
+  }
+  <!-- <div *ngIf="!(editor.definition.properties | keyvalue).length">
+    <button mat-raised-button color="primary" (click)="showAddProperty = true">
+      Add Property
+    </button>
+  </div>
+
+  <div *ngIf="showAddProperty || (editor.definition.properties | keyvalue).length">
+    <div class="add-property">
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="Enter property name"
+          [(ngModel)]="newPropertyName"
+        />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="Enter property value"
+          [(ngModel)]="newPropertyValue"
+        />
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="addNewProperty(editor.definition.properties)">
+        Save Property
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="(editor.definition.properties | keyvalue).length">
+    <div *ngFor="let property of editor.definition.properties | keyvalue; let i = index">
+      <div class="property-row">
+        <h4>{{ property.key }}</h4>
+        <button
+          type="button"
+          class="btn btn-danger"
+          color="warn"
+          (click)="removeProperty(editor.definition.properties, property.key)"
+        >
+          
+        </button>
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            type="text"
+            [value]="property.value"
+            [readonly]="editor.isReadonly"
+            (input)="updateProperty(editor.definition.properties, property.key, $event, editor.context)"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+  </div> -->
+
+</ng-template>
+
+<!-- <ng-template #rootEditor let-editor>
+  <h2>Properties</h2>
+
+  @for ( property of editor.definition.properties | keyvalue; track $index) {
+  <div>
+    <h4>{{ property.key }}</h4>
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        type="text"
+        [value]="property.value"
+        [readonly]="editor.isReadonly"
+        (input)="
+          updateProperty(
+            editor.definition.properties,
+            property.key,
+            $event,
+            editor.context
+          )
+        "
+      />
+    </mat-form-field>
+  </div>
+  }
+  <button mat-raised-button color="primary" (click)="generateWorkflowScript()">
+    Save Workflow
+  </button>
+</ng-template> -->
+<!-- ======================================================== Step Editor ======================================================== -->
+<ng-template #stepEditor let-editor>
+  <h2>Step Editor</h2>
+
+  <mat-tab-group>
+    <!-- <mat-tab label="Basic">
+      <h3>Name</h3>
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          type="text"
+          [value]="editor.step.name"
+          [readonly]="editor.isReadonly"
+          (input)="updateName(editor.step, $event, editor.context)"
+        />
+      </mat-form-field>
+    </mat-tab> -->
+    <mat-tab label="Properties">
+      <!-- <mat-form-field class="full-width">
+        <input
+          matInput
+          type="text"
+          [value]="editor.step.properties.velocity"
+          [readonly]="editor.isReadonly"
+          (input)="
+            updateProperty(
+              editor.step.properties,
+              'velocity',
+              $event,
+              editor.context
+            )
+          "
+        />
+      </mat-form-field> -->
+      @for ( property of editor.step.properties | keyvalue; track $index) {
+      <div>
+        <h4>{{ property.key }}</h4>
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            type="text"
+            [value]="getPropertyValue(property)"
+            [readonly]="editor.isReadonly"
+            (input)="
+              updateProperty(
+                editor.step.properties,
+                property.key,
+                $event,
+                editor.context
+              )
+            "
+          />
+        </mat-form-field>
+      </div>
+      }
+    </mat-tab>
+  </mat-tab-group>
+</ng-template>
+
+<!-- <div class="block">
+  <button mat-raised-button color="primary" (click)="reloadDefinitionClicked()">
+    Reload definition
+  </button>
+  &nbsp;
+  <button mat-raised-button color="primary" (click)="toggleReadonlyClicked()">
+    {{ isReadonly ? "Enable editing" : "Disable editing" }}
+  </button>
+  &nbsp;
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="toggleSelectedStepClicked()"
+  >
+    {{ selectedStepId ? "Unselect" : "Select first" }}
+  </button>
+  &nbsp;
+  <button mat-raised-button color="primary" (click)="toggleToolboxClicked()">
+    {{ isToolboxCollapsed ? "Show toolbox" : "Hide toolbox" }}
+  </button>
+  &nbsp;
+  <button mat-raised-button color="primary" (click)="toggleEditorClicked()">
+    {{ isEditorCollapsed ? "Show editor" : "Hide editor" }}
+  </button>
+  &nbsp; Is valid: <strong>{{ isValid }}</strong>
+</div> -->
+
+<!-- <div class="block">
+  <mat-form-field class="full-width flex-1s">
+    <textarea matInput cols="120" rows="16" readonly>{{ script }}</textarea>
+  </mat-form-field>
+</div> -->
+
+<!-- <div *ngIf="scriptLines.length > 0">
+  <h2>Workflow Script</h2>
+  <pre *ngFor="let line of scriptLines">{{ line }}</pre>
+</div> -->

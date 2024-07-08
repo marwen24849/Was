@@ -1,0 +1,134 @@
+<h1 mat-dialog-title class="dialog-title">Add Action</h1>
+<div mat-dialog-content class="dialog-content">
+  <form [formGroup]="newTask" class="new-task-form">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="Enter task name" />
+      @if (newTask.get('name')?.invalid && newTask.get('name')?.touched) {
+      <mat-error> Name is required </mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        formControlName="description"
+        placeholder="Enter task description"
+        rows="3"
+      ></textarea>
+      @if (newTask.get('description')?.invalid &&
+      newTask.get('description')?.touched) {
+      <mat-error> Description is required </mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Select Group</mat-label>
+      <mat-select
+        [(ngModel)]="selectedGroupId"
+        (selectionChange)="onGroupSelectionChange($event.value)"
+        [ngModelOptions]="{ standalone: true }"
+      >
+        @for (group of groups; track $index) {
+        <mat-option [value]="group.id">{{ group.name }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <!--   // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+
+      <mat-label style="margin: 20px 20px 20px 20px">Properties</mat-label>
+      <!-- Dynamic property input fields -->
+      @for (property of newTaskProperties.controls; track $index ) {
+      <!-- <div class="property-row">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Property Name</mat-label>
+        <input
+          matInput
+          placeholder="Enter property name"
+          formControlName="propertyName"
+          [(ngModel)]="property.value.propertyName"
+          (change)="getNameValue($event, $index)"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Property Type</mat-label>
+        <mat-select
+          [(ngModel)]="property.value.propertyType"
+          formControlName="propertyType"
+          (selectionChange)="getTypeValue($event, $index)"
+        >
+          <mat-option value="text">Text</mat-option>
+          <mat-option value="number">Number</mat-option>
+          <mat-option value="boolean">Boolean</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button
+        mat-icon-button
+        color="warn"
+        (click)="removeProperty($index)"
+      ></button>
+    </div> -->
+      <div class="property-row">
+        <mat-form-field appearance="outline" class="property-input">
+          <mat-label>Property Name</mat-label>
+          <input
+            matInput
+            placeholder="Enter property name"
+            formControlName="propertyName"
+            [(ngModel)]="property.value.propertyName"
+            (change)="getNameValue($event, $index)"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="property-input">
+          <mat-label>Property Type</mat-label>
+          <mat-select
+            [(ngModel)]="property.value.propertyType"
+            formControlName="propertyType"
+            (selectionChange)="getTypeValue($event, $index)"
+          >
+            <mat-option value="text">Text</mat-option>
+            <mat-option value="number">Number</mat-option>
+            <mat-option value="boolean">Boolean</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button
+          type="button"
+          class="btn btn-danger remove-button"
+          (click)="removeProperty($index)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+
+      }
+
+
+    <button
+      type="button"
+      class="btn btn-outline-secondary"
+      (click)="addNewProperty()"
+    >
+      Add Property
+    </button>
+
+    <!--   // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  </form>
+</div>
+<div mat-dialog-actions align="end" class="dialog-actions">
+  <button
+    type="button"
+    class="btn btn-outline-secondary"
+    color="warn"
+    (click)="onCancel()"
+  >
+    Cancel
+  </button>
+  <button
+    type="button"
+    class="btn btn-primary"
+    (click)="onSave()"
+    cdkFocusInitial
+  >
+    Add
+  </button>
+</div>

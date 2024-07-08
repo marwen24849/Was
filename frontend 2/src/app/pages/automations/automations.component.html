@@ -1,0 +1,160 @@
+<div class="container p-4">
+  <!-- Projects header -->
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex align-items-center mb-3">
+        <h1 class="h4 mb-0">Automations</h1>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search and New Project button row -->
+  <div class="row mb-3">
+    <div class="col-md-6 d-flex justify-content-start">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search"
+        [(ngModel)]="searchText"
+        (input)="applyFilter()"
+      />
+    </div>
+    <!-- <div class="col-md-6 d-flex justify-content-end">
+      <button mat-flat-button color="primary" >
+        <mat-icon>add</mat-icon>
+        New Project
+      </button>
+    </div> -->
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Description</th>
+              <th scope="col">Owner</th>
+              <th scope="col">Created At</th>
+              <th scope="col">Enable</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (automation of displayedAutomations; track $index) {
+            <tr>
+              <td class="text-center">
+                <div class="cell-content">
+                  <mat-icon>precision_manufacturing</mat-icon>
+                  <span>{{ automation.name }}</span>
+                </div>
+              </td>
+              <td>
+                <div class="cell-content">
+                  <span>{{ automation.description }}</span>
+                </div>
+              </td>
+              <td>
+                <div class="cell-content">
+                  <span>{{ automation.createdBy }}</span>
+                </div>
+              </td>
+              <td>
+                <div class="cell-content">
+                  <span>{{ automation.createdAt | date }}</span>
+                </div>
+              </td>
+              <td>
+                <!-- <div class="cell-content"> -->
+                <!-- <ng-container>
+                    @if (automation.valid) {
+                    <mat-icon>verified</mat-icon>
+                    }@else {
+                    <mat-icon>cancel</mat-icon>
+                    }
+                  </ng-container> -->
+                <!-- <div class="form-check form-switch">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="toggleSwitch"
+                      [checked]="automation?.active"
+                      (change)="toggleAutomationStatus(automation)"
+                    />
+                    <label class="form-check-label" for="toggleSwitch">
+                      {{ automation?.valid ? "Active" : "Inactive" }}
+                    </label>
+                  </div> -->
+                <div class="row align-items-center">
+                  <div class="col-auto">
+                    <div class="form-check form-switch">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="toggleSwitch"
+                        [checked]="automation?.valid"
+                        (change)="toggleAutomationStatus(automation)"
+                        [class.is-active]="automation?.valid"
+                      />
+                      <!-- <label class="form-check-label" for="toggleSwitch">
+                        {{ automation?.valid ? "Active" : "Inactive" }}
+                      </label> -->
+                    </div>
+                  </div>
+                  <!-- <span>{{ automation.valid }}</span> -->
+                </div>
+              </td>
+
+              <td>
+                <div class="cell-content">
+                  <div class="btn-group">
+                    <button
+                      class="btn"
+                      matRipple
+                      matRippleColor="rgb(171,219,227)"
+                      [matMenuTriggerFor]="menu"
+                    >
+                      <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                      <button mat-menu-item class="dropdown-item">
+                        <mat-icon>check_small</mat-icon>Validate
+                      </button>
+                      <!-- <button mat-menu-item class="dropdown-item">
+                        <mat-icon>edit</mat-icon> Edit
+                      </button> -->
+                      <button mat-menu-item class="dropdown-item">
+                        <mat-icon>delete</mat-icon> Delete
+                      </button>
+                    </mat-menu>
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- @if (showSpinner) {
+  <div class="spinner-overlay">
+    <mat-spinner diameter="150"></mat-spinner>
+  </div>
+  } -->
+  <!-- Paginator -->
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center">
+      <mat-paginator
+        [length]="totalAutomations"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="[5, 10, 20]"
+        (page)="onPageChange($event)"
+        showFirstLastButtons
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</div>

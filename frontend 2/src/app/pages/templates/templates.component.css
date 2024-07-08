@@ -1,0 +1,97 @@
+.dashboard-content{
+  background-color: white;
+  margin: 20px;
+  padding: 15px;
+}
+
+.header-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    margin: 10px;
+    padding: 10px;
+
+}
+
+.info-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    margin: 20px;
+    padding: 10px;
+    
+
+}
+.info-card{
+    width: 200px;
+    height: 90px;
+    padding: 7px;
+    border-color: lightgray;
+    border-width: 1px;
+    background-color: transparent;
+  box-shadow: none;
+
+}
+
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px; /* Adjust the gap between cards as needed */
+    
+    
+  }
+  mat-chip{
+    width: 25%;
+    justify-content: center;
+    height: 12%;
+    margin: 10px;
+    font-size: x-large;
+  }
+ 
+  
+ button{
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+  color:blue;
+
+ }
+  
+  .custom-card {
+    background-color: white;
+    border-radius: 12;
+    border-color: lightgray;
+    border-width: 1px;
+    padding: 5px;
+    background-color: transparent;
+  box-shadow: none;
+
+    
+  }
+  
+
+  
+  .custom-card {
+    border-radius: 10px;
+    
+  }
+  
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .subtitle {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .info-container {
+    margin-bottom: 20px;
+  }
+  
+  .info-card {
+    border-radius: 10px;
+    /* background-color: #f5f5f5; */
+  }

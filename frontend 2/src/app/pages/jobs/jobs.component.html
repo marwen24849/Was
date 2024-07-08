@@ -1,0 +1,98 @@
+<div class="containerp-4">
+  <div class="container p-4">
+    <div class="row">
+      <div class="col-12">
+        <div class="d-flex align-items-center mb-3">
+          <h1 class="h4 mb-0">Jobs</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6 d-flex justify-content-start">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search"
+          [(ngModel)]="searchText"
+          (input)="applyFilter()"
+        />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Robot Name</th>
+                <th scope="col">Started At</th>
+                <th scope="col">Running Time</th>
+                <th scope="col">Status</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (job of displayedJobs; track $index) {
+              <tr>
+                <td class="text-center">
+                  <div class="cell-content">
+                    <mat-icon>book_2</mat-icon>
+                    <span>{{ job.name }}</span>
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div class="cell-content">
+                    <span>{{ job.description }}</span>
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div class="cell-content">
+                    <span>{{ job.lastModifiedAt }}</span>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="cell-content">
+                    <div class="btn-group">
+                      <button
+                        class="btn"
+                        matRippleColor="rgb(171,219,227)"
+                        [matMenuTriggerFor]="menu"
+                      >
+                        <mat-icon>more_vert</mat-icon>
+                      </button>
+                      <mat-menu #menu="matMenu">
+                        <button mat-menu-item class="dropdown-item">
+                          <mat-icon>edit</mat-icon> Edit
+                        </button>
+                        <button mat-menu-item class="dropdown-item">
+                          <mat-icon>delete</mat-icon> Delete
+                        </button>
+                      </mat-menu>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center">
+      <mat-paginator
+        [length]="totalJobs"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="[5, 10, 20]"
+        (page)="onPageChange($event)"
+        showFirstLastButtons
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<!-- <ng-container class="background">
+
+<div class="page-wrapper">
+
+    <mat-card class="login-container">
+        <mat-card-header>
+          <mat-card-title class="card-title">Login</mat-card-title>
+        </mat-card-header>
+      
+        <mat-card-content>
+            @if (errorMsg.length > 0) {
+          <div class="alert alert-danger" role="alert" >
+            @for (msg of errorMsg; track $index) {
+                <p >{{msg}}</p>
+            }
+            
+          </div>
+        }
+      
+          <div class="form-field-container">
+            <mat-form-field appearance="fill">
+              <mat-label>Email address</mat-label>
+              <input matInput [(ngModel)]="authRequest.email" type="email" placeholder="name@example.com">
+            </mat-form-field>
+          </div>
+      
+          <div class="form-field-container">
+            <mat-form-field appearance="fill">
+              <mat-label>Password</mat-label>
+              <input matInput [(ngModel)]="authRequest.password" type="password" placeholder="Password">
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      
+        <mat-card-actions>
+          <button mat-raised-button class="sign-in-button" (click)="login()" color="primary">
+            <mat-icon>lock_open</mat-icon>
+            Sign in
+          </button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+</ng-container> -->

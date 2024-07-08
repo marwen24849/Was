@@ -1,0 +1,19 @@
+<!-- <h1 mat-dialog-title>Script Content</h1>
+<div mat-dialog-content>
+  <textarea class="script-display" [value]="scriptContent" readonly></textarea>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Close</button>
+</div> -->
+
+<h2 mat-dialog-title>Robot Framework Script</h2>
+<div mat-dialog-content>
+  <!-- <pre>{{ data.scriptContent }}</pre> -->
+
+  @for (line of scriptLines; track $index) {
+  <pre>{{ line }}</pre>
+  }
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="true">Close</button>
+</div>

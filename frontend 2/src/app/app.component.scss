@@ -1,0 +1,34 @@
+body,
+html,
+.material-app,
+.mat-sidenav-container {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  /* Remove default margin */
+}
+
+.sidenav {
+  width: 210px;
+  padding: 10px;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+}
+
+.example-sidenav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+
+}

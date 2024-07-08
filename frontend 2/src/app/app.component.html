@@ -1,0 +1,19 @@
+
+
+
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="over" class="sidenav">
+    <!-- <div class="logo-container">
+      <img src="../assets/logo.png" alt="Logo" class="logo" />
+    </div> -->
+    <!-- <mat-divider></mat-divider> -->
+    <app-side-nav (closeSideNav)="sidenav.close()"></app-side-nav>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-app-bar (SideNavToggle)="sidenav.toggle()"></app-app-bar>
+    <router-outlet> </router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<!-- <router-outlet> </router-outlet> -->

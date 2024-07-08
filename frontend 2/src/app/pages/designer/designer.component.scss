@@ -1,0 +1,117 @@
+body,
+input,
+textarea,
+button {
+	font:
+		13px/1.3em Arial,
+		Verdana,
+		Serif;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	color: #2c18df;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+textarea {
+	font-size: 9pt !important;
+	line-height: 1.2em !important;
+}
+
+
+::ng-deep {
+
+	.sqd-designer-angular {
+		width: 100vw;
+		height: 85vh;
+
+
+
+	}
+
+	.sqd-editor {
+		padding: 10px;
+	}
+
+	.block {
+		text-align: center;
+		margin: 10px;
+
+	}
+
+	.full-width {
+		width: 100%;
+	}
+
+	// .sqd-toolbox {
+	// 	width: 13%;
+
+	// }
+
+	.sqd-scrollbox {
+		width: 100%;
+	}
+
+	.sqd-toolbox-item .sqd-type-action {
+		color: red;
+	}
+
+
+
+}
+
+::ng-deep {
+
+	.sqd-designer {
+		margin-top: 0%;
+
+
+
+	}
+
+
+
+
+
+}
+
+.row.mb-3 {
+	margin-bottom: 0 !important;
+	border-bottom: 1px solid #dee2e6;
+
+}
+
+
+.custom-button {
+	background: transparent !important;
+	color: #0a0c0d !important;
+	/* Adjust color as needed */
+	border: 0.5px solid #0a0c0d !important;
+	/* Add border to make it visible */
+}
+
+.custom-button:hover {
+	//background: rgba(25, 118, 210, 0.1) !important;
+	border: 1.3px solid #000000 !important;
+	/* Highlight color */
+}
+
+.button-group {
+	display: flex;
+	gap: 10px;
+	/* Adjust spacing between buttons as needed */
+}
+
+.button-group .custom-button:first-child {
+	margin-left: 3px;
+	/* Adjust this value to move the buttons to the right */
+}

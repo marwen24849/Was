@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>Schedule Details</h2>
+<div mat-dialog-content>
+  <p><strong>Name:</strong> {{ data.name }}</p>
+  <p><strong>Robot:</strong> {{ data.robot }}</p>
+  <p><strong>Description:</strong> {{ data.description }}</p>
+  <p><strong>Schedule:</strong> {{ data.cronExpression | cronParser }}</p>
+  <p><strong>Cron:</strong> {{ data.cronExpression }}</p>
+  <p><strong>Status:</strong> {{ data.active }}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>

@@ -1,0 +1,43 @@
+<h1 mat-dialog-title class="dialog-title">Submit as template</h1>
+<div mat-dialog-content class="dialog-content">
+  <p>This template will be available to everyone in your organization</p>
+
+  <form [formGroup]="newGroup" class="new-group-form">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Template name</mat-label>
+      <input matInput formControlName="name" placeholder="Enter group name" />
+
+      @if (newGroup.get('name')?.invalid && newGroup.get('name')?.touched) {
+      <mat-error>Name is required</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        formControlName="description"
+        placeholder="Enter group description"
+        rows="3"
+      ></textarea>
+      @if ( newGroup.get('description')?.invalid &&
+      newGroup.get('description')?.touched) {
+      <mat-error>Description is required</mat-error>
+      }
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions align="end" class="dialog-actions">
+  <button type="button" class="btn btn-outline-primary" (click)="onCancel()">
+    Cancel
+  </button>
+  <button
+    (click)="onSave()"
+    [disabled]="newGroup.invalid"
+    mat-dialog-close
+    cdkFocusInitial
+    type="button"
+    class="btn btn-primary"
+  >
+    Publish
+  </button>
+</div>

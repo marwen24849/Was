@@ -1,0 +1,41 @@
+/* schedule-details-dialog.component.css */
+
+/* Style for the overall dialog container */
+.mat-dialog-container {
+    max-width: 400px; /* Adjust as needed */
+  }
+  
+  /* Style for the dialog title */
+  .mat-dialog-title {
+    background-color: #1976d2; /* Example background color */
+    color: white; /* Example text color */
+    padding: 16px; /* Padding around the title */
+  }
+  
+  /* Style for the dialog content area */
+  .mat-dialog-content {
+    padding: 16px; /* Padding inside the content area */
+  }
+  
+  /* Style for the individual detail items (Name, Robot, Description, etc.) */
+  .mat-dialog-content p {
+    margin: 8px 0; /* Margin between detail items */
+  }
+  
+  /* Style for the dialog actions area (bottom part with the Close button) */
+  .mat-dialog-actions {
+    justify-content: flex-end; /* Align actions to the right */
+    padding: 16px; /* Padding for the actions area */
+  }
+  
+  /* Style for the Close button */
+  .mat-dialog-actions button {
+    color: #1976d2; /* Example text color */
+    border-color: #1976d2; /* Example border color */
+  }
+  
+  /* Hover effect for the Close button */
+  .mat-dialog-actions button:hover {
+    background-color: #1976d2; /* Example background color on hover */
+    color: white; /* Example text color on hover */
+  }
